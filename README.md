@@ -9,12 +9,9 @@ You can't because you need the exact information about the server configuration 
 
 ### Contribution guidelines ###
 
-The whole project was written only by me *Zoltán Onódy*
+The whole project was written only by me **Zoltán Onódy**
 
 ### Who do I talk to? ###
 
-* Repo owner and developer
-Zotán Onódy - zoltan.onody@gmail.com
-
-* Server site jobs
-Kryštof Kiss - 
+* Repo owner and developer ---> **Zotán Onódy** - zoltan.onody@gmail.com
+* Server site jobs ---> **Kryštof Kiss** - kissko1995@gmail.com 
