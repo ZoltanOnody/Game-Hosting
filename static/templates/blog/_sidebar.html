@@ -1,0 +1,21 @@
+<div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+
+    <div class="sidebar-module">
+        <h4>Kategórie</h4>
+        <ol class="list-unstyled">
+        {% for category in sidebar_categories %}
+            <li><a href="{% url "blog:category" category.url %}">{{ category.name }}</a></li>
+        {% endfor %}
+        </ol>
+    </div>
+
+    <div class="sidebar-module">
+        <h4>Značky</h4>
+        <ol class="list-unstyled">
+        {% for tag in sidebar_tags %}
+            <li><a href="{% url "blog:tag" tag.url %}">{{ tag.name }}</a></li>
+        {% endfor %}
+        </ol>
+    </div>
+
+</div><!-- /.blog-sidebar -->

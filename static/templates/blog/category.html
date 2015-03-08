@@ -1,0 +1,18 @@
+{% extends 'blog/_base.html' %}
+
+{% block content %}
+<div class="row">
+
+    <div class="col-sm-8 blog-main">
+
+        <h1>Články v kategórii: {{ category.name }}</h1>
+        <p>{{ category.description }}</p>
+
+        {% include "blog/_articles.html" %}
+
+    </div><!-- /.blog-main -->
+
+    {% include "blog/_sidebar.html" %}
+
+</div><!-- /.row -->
+{% endblock content %}

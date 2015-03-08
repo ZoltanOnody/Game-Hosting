@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert {% if message.tags %}{{ message.tags }}{% endif %} margin-top" role="alert">
+            {{ message }}
+            <button type="button" class="close">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+        </div>
+        {% endfor %}
+    {% endif %}
+
+<div class="col-md-10 col-md-offset-1">
+    <div class="col-md-6">
+        <h2>Zoltán Onódy</h2>
+        <ul>
+            <li>Tvorca webovej a programátorskej časti tohto projektu.</li>
+            <li>Študent informatiky, zaujíma sa o programovanie (algoritmizácia a optimalizácia) a tvorbu webstránok.</li>
+            <li>Vo voľnom čase sa venuje súťažnému programovaniu.</li>
+        </ul>
+
+        <h2>Kryštof Kiss</h2>
+        <ul>
+           <li>Tvorca serverovej a skriptovacej časti projektu.</li>
+           <li>Študent informatiky, jeho najväčšou záľubou sú serverové operačné systémy, najmä Debian.</li>
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <h2 class="text">Kontaktný formulár</h2>
+        <form action="{% url "gamepanel:about" %}" method="post" class="form-horizontal" role="form">
+            {% csrf_token %}
+
+            {% for row in form %}
+            <div class="form-group {% if row.errors %}has-error{% endif %}">
+                <label for="" class="col-sm-3 control-label">{{ row.label }}</label>
+                <div class="col-sm-9">
+                    {{ row }}
+                    {{ row.errors }}
+                </div>
+            </div>
+            {% endfor %}
+            <input type="submit" value="Odoslať" class="col-md-offset-3 btn btn-default">
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

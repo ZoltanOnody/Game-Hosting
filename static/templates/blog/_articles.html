@@ -1,0 +1,18 @@
+{% for article in articles %}
+<div class="blog-post">
+    <h2 class="blog-post-title"><a href="{% url "blog:single" article.url %}">{{ article.headline }}</a></h2>
+    <p class="blog-post-meta">
+        {{ article.date|date:"j. F Y - H:i" }} v
+        <a href="{% url "blog:category" article.category.url %}">{{ article.category }}</a>;
+
+        {% if article.tags.all|length != 0 %}
+        značky:
+        {% endif %}
+        {% for tag in article.tags.all %}
+            <a href="{% url "blog:tag" tag.url %}">{{ tag }}</a>,
+        {% endfor %}
+    </p>
+    {{ article.context|safe|escape }}
+</div><!-- /.blog-post -->
+<hr>
+{% endfor %}

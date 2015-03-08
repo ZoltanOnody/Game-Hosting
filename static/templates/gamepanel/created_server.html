@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+    <h1>Server - {{ server.game }} - "{{ current_server_info.server_name.1 }}"</h1>
+
+    {% if current_server_info != -1 %}
+
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert {% if message.tags %}{{ message.tags }}{% endif %}" role="alert">
+                {{ message }}
+                <button type="button" class="close">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+            </div>
+            {% endfor %}
+        {% endif %}
+
+        <p>
+        <div class="input-group">
+            <span class="input-group-addon">/</span>
+            <input type="text" class="form-control" value="connect {{ server_ip }}:{{ server.port }}
+            {% if server.serv_pass %}; password {{ server.serv_pass }}{% endif %}" readonly />
+        </div>
+        </p>
+
+
+        <table class="table table-bordered" style="background: #f6f6f6">
+            <tr>
+                <th>Rcon heslo: </th>
+                <td>{{ server.rcon_pass }}</td>
+            </tr>
+            {% for key, value in current_server_info.items %}
+            <tr> <!-- doest it start from 0 or 1 ? -->
+                <th>{{ value.0 }}</th>
+                <td>{{ value.1 }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <p class="text-center">
+            <a href="{% url "gamepanel:command" server.id server.password 'restart' %}" type="button"
+               class="btn btn-warning"><i class="glyphicon glyphicon-repeat"></i>&nbsp;&nbsp;Restart server</a>
+            <a href="{% url "gamepanel:command" server.id server.password 'stop' %}" type="button"
+               class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i>&nbsp;&nbsp;Remove server</a>
+        </p>
+
+    {% else %} <!--if the server haven't been created yet -->
+    <div class="alert alert-warning" role="alert">
+        The website is creating server... please wait
+        <button type="button" class="close">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+        </button>
+    </div>
+
+    <p class="text-center"><img src="{% static "images/spinner.gif" %}"> </p>
+
+    <script>
+        setTimeout(function(){
+           window.location.reload(1);
+        }, 5000);
+    </script>
+    {% endif %}
+
+{% endblock content %}

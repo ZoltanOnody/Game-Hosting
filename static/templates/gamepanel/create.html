@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <h1 class="text-center">Vyberte si hru!</h1>
+
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert {% if message.tags %}{{ message.tags }}{% endif %}" role="alert">
+            {{ message }}
+            <button type="button" class="close">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+        </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="col-lg-8 col-lg-offset-2 col-"> <!-- todo: po sutazi: <div class="row"> -->
+
+        {% for row in games %}
+        <div class="col-md-6">
+            <a href="{% url 'gamepanel:create_game' row.id %}" class="thumbnail">
+                <img src="{% static "images/thumbnail/" %}{{ row.cover }}" alt="{{ row.name }}">
+            </a>
+        </div>
+        {% endfor %}
+
+    </div>
+{% endblock content %}

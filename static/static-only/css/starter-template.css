@@ -1,0 +1,27 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+.sidebar-module {
+    margin-bottom: 40px;
+}
+.blog-header.jumbotron {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.errorlist {
+    color: #a94442;
+    padding-top: 5px;
+    padding-left: 25px;
+}
+.margin-top {
+    margin-top: 20px;
+}
+@media (max-width: 767px) {
+    .form-popover-helper{
+        margin-top:10px;
+    }
+}

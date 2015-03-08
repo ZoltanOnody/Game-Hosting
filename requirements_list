@@ -1,0 +1,6 @@
+Django==1.7
+Pillow==2.6.1
+bootstrap-admin==0.3.3
+django-simple-captcha==0.4.3
+django-wysiwyg-redactor==0.4.0
+six==1.8.0
